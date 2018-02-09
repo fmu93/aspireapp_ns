@@ -10,6 +10,5 @@ export function onLoaded(args: EventData) {
     component.bindingContext = new HomeViewModel();
     if (!BackendService.isLoggedIn()) {
         return topmost.navigate("login");
-        
     }
 }
