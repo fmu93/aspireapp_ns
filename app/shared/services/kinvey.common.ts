@@ -1,5 +1,4 @@
 const Kinvey = require("kinvey-nativescript-sdk").Kinvey;
-
 const config = require("./config");
 
 /* ***********************************************************
@@ -14,7 +13,8 @@ Kinvey.init({
 });
 Kinvey.ping()
     .then((response) => {
-        console.log(`Kinvey Ping Success. Kinvey Service is alive, version: ${response.version}, response: ${response.kinvey}`);
+        console.log(`Kinvey Ping Success. Kinvey Service is alive, version:
+        ${response.version}, response: ${response.kinvey}`);
     })
     .catch((error) => {
         console.log(`Kinvey Ping Failed. Response: ${error.description}`);

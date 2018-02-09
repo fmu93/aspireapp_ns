@@ -1,8 +1,8 @@
 import { EventData } from "data/observable";
 import * as frameModule from "ui/frame";
 import { StackLayout } from "ui/layouts/stack-layout";
+import { BackendService } from "../.././shared/services/backend.service";
 import { HomeViewModel } from "./home-view-model";
-import { BackendService } from "./shared/services/backend.service";
 
 const topmost = frameModule.topmost();
 export function onLoaded(args: EventData) {
