@@ -4,11 +4,10 @@ import { StackLayout } from "ui/layouts/stack-layout";
 import { BackendService } from "../.././shared/services/backend.service";
 import { HomeViewModel } from "./home-view-model";
 
-const topmost = frameModule.topmost();
 export function onLoaded(args: EventData) {
     const component = <StackLayout>args.object;
     component.bindingContext = new HomeViewModel();
     if (!BackendService.isLoggedIn()) {
-        return topmost.navigate("login");
+        // return frameModule.topmost().navigate("login/login");
     }
 }

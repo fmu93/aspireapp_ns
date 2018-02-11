@@ -1,0 +1,21 @@
+.fade{
+    animation-name:example;
+    opacity:0;
+    animation-duration:1;
+    animation-timing-function:ease-out;
+    animation-fill-mode:forwards;
+}
+
+@keyframes example{
+    from{
+        transform:translate(0, -100)
+    }
+    to{
+        transform:translate(0, 0)
+    }
+}
+
+@keyframes opacity{
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
