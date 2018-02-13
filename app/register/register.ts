@@ -30,20 +30,25 @@ export function signUp() {
 }
 
 export function completeRegistration() {
-    const promise = BackendService.register(user)
-        .then(() => {
-        // trying to save user into local storage on first singup
-        user.storeUser();
-        console.log(user.username + " pass: " + user.password);
-        })
-        .then(() => {
-          dialogs.alert("User registered and stored: " + user.username);
-          frameModule.topmost().navigate("login/login");
-        })
-        .catch((error: Kinvey.BaseError) => {
-          console.log(error.stack);
-        });
-
+    BackendService.exists(user).then((exists) => {
+        if (exists) {
+            dialogs.alert("Username already exists");
+        } else {
+            const promise = BackendService.register(user)
+            .then(() => {
+            // trying to save user into local storage on first singup
+            user.storeUser();
+            console.log(user.username + " pass: " + user.password);
+            })
+            .then(() => {
+            dialogs.alert("User registered and stored: " + user.username);
+            frameModule.topmost().navigate("login/login");
+            })
+            .catch((error: Kinvey.BaseError) => {
+            console.log(error.stack);
+            });
+        }
+    });
 }
 
 // export function register() {

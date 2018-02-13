@@ -27,6 +27,10 @@ export class BackendService {
       return Kinvey.User.resetPassword(email);
     }
 
+    static exists(user: User) {
+      return Kinvey.User.exists(user.username);
+    }
+
     static removeUser() {
       // TODO no remove function in User
     //   const promise = Kinvey.User.remove(Kinvey.User.getActiveUser().username, {
@@ -38,9 +42,9 @@ export class BackendService {
     //     .catch((error: Kinvey.BaseError) => {
     //       // ...
     //     });
-    // }
+    }
 
     // static toJSON(user: User) {
     //   return JSON.stringify(Kinvey.User.toJSON());
-    }
+    // }
   }
