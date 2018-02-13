@@ -3,11 +3,9 @@ import * as dialogs from "ui/dialogs";
 import * as frameModule from "ui/frame";
 import { BackendService } from "../shared/services/backend.service";
 import { LoginService } from "./../login/login.service";
+import { User } from "./../shared/user.model";
 
-const user = new Kinvey.User({
-    username: "paco",
-    password: "123"
-});
+const user = new User();
 
 export function onLoaded(args) {
     const page = args.object;
@@ -15,28 +13,32 @@ export function onLoaded(args) {
 }
 
 export function signUp() {
-    console.log("SignUp");
     completeRegistration();
 }
 
 export function completeRegistration() {
-    if (!BackendService.isLoggedIn()) {
+    if (BackendService.isLoggedIn()) {
         const oldUser = user.username;
         const promise1 = BackendService.logout()
         .then(() => {
-            dialogs.alert("user logged off: " + oldUser).then(() => {
-                // console.log(user.me());
+            dialogs.alert("user logged off").then(() => {
+                console.log("success loggin off");
         }).catch((error: Kinvey.BaseError) => {
             console.log("error loggin off");
         });
         });
     }
-    console.log(user.username + " " + user.password);
+    console.log(user.username + "12423" + user.password);
     const promise = BackendService.register(user)
+        // .then((user: Kinvey.User) => {
+        // localStorage.setItem('newUser', JSON.stringify(user.toJSON()));
+
+        // return user;
+        // })
         .then((user2: Kinvey.User) => {
           console.log("User registered: " + user2.username);
           console.log(BackendService.isLoggedIn());
-        //   frameModule.topmost().navigate("login/login");
+          frameModule.topmost().navigate("login/login");
         })
         .catch((error: Kinvey.BaseError) => {
           console.log(error.stack);

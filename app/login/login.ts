@@ -60,11 +60,9 @@ export function signIn(args) {
             console.log("Login error");
         });
     }
-    console.log("signIn " + user.username);
 }
 
 export function register(args) {
-    console.log("register");
     frameModule.topmost().navigate("register/register");
 
 }

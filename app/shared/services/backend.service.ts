@@ -1,4 +1,5 @@
-import { Kinvey, User } from "kinvey-nativescript-sdk";
+import { Kinvey } from "kinvey-nativescript-sdk";
+import { User } from "./../../shared/user.model";
 
 export class BackendService {
     static isLoggedIn(): boolean {
@@ -20,8 +21,7 @@ export class BackendService {
     }
   
     static logout() {
-      console.log("Logging out");
-      
+
       return Kinvey.User.logout();
     }
   

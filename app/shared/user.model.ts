@@ -1,13 +1,13 @@
 import { Kinvey } from "kinvey-nativescript-sdk";
 
-const validator = require("email-validator");
+// const validator = require("email-validator");
 
 export class User {
   username?: string;
   email?: string;
   password: string;
 
-  isValidEmail() {
-    return validator.validate(this.email);
-  }
+  // isValidEmail() {
+  //   return validator.validate(this.email);
+  // }
 }
