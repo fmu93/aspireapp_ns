@@ -1,18 +1,18 @@
 // import { Injectable } from "core";
-import { Headers, Http, Response } from "http";
-import { Kinvey } from "kinvey-nativescript-sdk";
+// import { Headers, Http, Response } from "http";
+import { Kinvey, User } from "kinvey-nativescript-sdk";
 import "rxjs/add/observable/throw";
 import "rxjs/add/operator/catch";
 import "rxjs/add/operator/do";
 import "rxjs/add/operator/map";
 import { Observable } from "rxjs/Observable";
 
-import { BackendService } from "./../shared/services/backend.service";
-import { User } from "./../shared/user.model";
+// import { BackendService } from "./../shared/services/backend.service";
+// import { User } from "./../shared/user.model";
 
 // @Injectable()
 export class LoginService {
-  constructor(private http: Http) { }
+  // constructor(http: Http) { }
 
   register(user: User) {
     return Kinvey.User.signup(user);
@@ -26,7 +26,7 @@ export class LoginService {
     return Kinvey.User.loginWithMIC("http://redirecturi");
   }
 
-  logoff() {
+  logoout() {
     return Kinvey.User.logout();
   }
 

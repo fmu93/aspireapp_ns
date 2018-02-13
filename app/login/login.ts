@@ -1,10 +1,11 @@
 import { fromObject } from "data/observable";
-import { Kinvey } from "kinvey-nativescript-sdk";
+import { Kinvey, KinveyError } from "kinvey-nativescript-sdk";
 import view = require("ui/core/view");
 import * as dialogs from "ui/dialogs";
 import { AnimationCurve } from "ui/enums";
+import * as frameModule from "ui/frame";
 import { Page } from "ui/page";
-import { LoginService } from "./login.service";
+import { BackendService } from "../shared/services/backend.service";
 
 const user = new Kinvey.User({
     _id: "user-id",
@@ -29,7 +30,8 @@ export function onLoaded(args) {
         curve: AnimationCurve.easeOut
     });
 
-    LoginService.login(user);
+    // loginService.login(user);
+    // user.login(user.username, user.password);
 
     // Create new user if not existing
     // const promise = Kinvey.User.signup()
@@ -42,15 +44,27 @@ export function onLoaded(args) {
 }
 
 export function signIn(args) {
-    console.log("signIn");
-    if (user.isActive) {
-        dialogs.alert("no user active").then(() => {
-            console.log("Dialog closed!");
+    if (BackendService.isLoggedIn()) {
+        const oldUser = user.username;
+        const promise = BackendService.logout()
+        .then(() => {
+            dialogs.alert("user logged off: " + oldUser).then(() => {
+                // console.log(user.me());
+        }).catch((error: Kinvey.BaseError) => {
+            console.log("error loggin off");
+        });
+        });
+    } else {
+        user.login(user.username, user.password)
+        .catch((error: KinveyError) => {
+            console.log("Login error");
         });
     }
-    console.log(user.email);
+    console.log("signIn " + user.username);
 }
 
 export function register(args) {
     console.log("register");
+    frameModule.topmost().navigate("register/register");
+
 }

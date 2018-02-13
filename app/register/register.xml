@@ -1,0 +1,10 @@
+<Page loaded="onLoaded">
+    <StackLayout>
+        <Image src="res://logo" stretch="none" horizontalAlignment="center"/>
+
+        <TextField text="{{ username }}" id="username" hint="username" autocorrect="false" autocapitalizationType="none" />
+        <TextField text="{{ password }}" id="password" secure="true" hint="Password" />
+
+        <Button text="Sign Up" tap="signUp" />
+    </StackLayout>
+</Page>
