@@ -30,11 +30,14 @@ export function signUp() {
 }
 
 export function completeRegistration() {
-    console.log(user.username + " pass: " + user.password);
     const promise = BackendService.register(user)
         .then(() => {
-          console.log("User registered: " + user.username);
-          console.log(BackendService.isLoggedIn());
+        // trying to save user into local storage on first singup
+        user.storeUser();
+        console.log(user.username + " pass: " + user.password);
+        })
+        .then(() => {
+          dialogs.alert("User registered and stored: " + user.username);
           frameModule.topmost().navigate("login/login");
         })
         .catch((error: Kinvey.BaseError) => {

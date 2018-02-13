@@ -1,4 +1,5 @@
 import { Kinvey } from "kinvey-nativescript-sdk";
+// const http = require("http");
 import { User } from "./../../shared/user.model";
 
 export class BackendService {
@@ -9,24 +10,24 @@ export class BackendService {
     static register(user: User) {
       return Kinvey.User.signup(user);
     }
-  
+
     static login(user: User) {
       return Kinvey.User.login(user.username, user.password);
     }
-  
+
     static loginWithMIC() {
       return Kinvey.User.loginWithMIC("http://redirecturi");
     }
-  
+
     static logout() {
       return Kinvey.User.logout();
     }
-  
+
     static resetPassword(email) {
       return Kinvey.User.resetPassword(email);
     }
 
-    static printUser() {
-      return console.log(Kinvey.User.getActiveUser().username);
-    }
+    // static toJSON(user: User) {
+    //   return JSON.stringify(Kinvey.User.toJSON());
+    // }
   }

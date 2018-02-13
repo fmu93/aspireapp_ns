@@ -1,6 +1,6 @@
 import { fromObject } from "data/observable";
 import { Kinvey, KinveyError } from "kinvey-nativescript-sdk";
-import view = require("ui/core/view");
+import { View } from "ui/core/view";
 import * as dialogs from "ui/dialogs";
 import { AnimationCurve } from "ui/enums";
 import * as frameModule from "ui/frame";
@@ -11,17 +11,20 @@ import { User } from "./../shared/user.model";
 const user = new User();
 
 export function onLoaded(args) {
+    // check if existing user on local storage
+    user.retrieveUser();
+
     const page = <Page>args.object;
     page.bindingContext = user;
 
-    const logo = <view.View> page.getViewById("logo");
+    const logo = <View> page.getViewById("logo");
     logo.animate({
         opacity: 1,
         duration: 2000,
         // translate: { x: 0, y: 100},
         curve: AnimationCurve.easeOut
     });
-}
+ }
 
 export function signIn(args) {
         // Actually, the only way to be logged in at this point is after successful regisrtration

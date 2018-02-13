@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "kinvey-nativescript-sdk": "3.9.9",
+    "nativescript-localstorage": "^1.1.5",
     "nativescript-theme-core": "~1.0.4",
     "tns-core-modules": "~3.4.0"
   },
