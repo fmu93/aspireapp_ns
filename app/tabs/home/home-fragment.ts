@@ -8,4 +8,3 @@ export function onLoaded(args: EventData) {
     const component = <StackLayout>args.object;
     component.bindingContext = new HomeViewModel();
 }
-

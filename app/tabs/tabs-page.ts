@@ -55,4 +55,5 @@ export function logOut() {
 
 export function deleteUser() {
     BackendService.removeUser();
+    BackendService.invokeTest();
 }

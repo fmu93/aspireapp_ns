@@ -1,6 +1,7 @@
 import { Kinvey } from "kinvey-nativescript-sdk";
 // const http = require("http");
 import { User } from "./../../shared/user.model";
+const config = require("./config");
 
 export class BackendService {
     static isLoggedIn(): boolean {
@@ -33,15 +34,48 @@ export class BackendService {
 
     static removeUser() {
       // TODO no remove function in User
-    //   const promise = Kinvey.User.remove(Kinvey.User.getActiveUser().username, {
-    //     hard: true
-    //   })
-    //     .then(() => {
-    //       // ...
-    //     })
-    //     .catch((error: Kinvey.BaseError) => {
-    //       // ...
-    //     });
+      //   const promise = Kinvey.User.remove(Kinvey.User.getActiveUser().username, {
+      //     hard: true
+      //   })
+      //     .then(() => {
+      //       // ...
+      //     })
+      //     .catch((error: Kinvey.BaseError) => {
+      //       // ...
+      //     });
+    }
+
+    static lookUp() {
+      // const query = new Kinvey.Query();
+      // query.equalTo('firstName', 'John');
+      // const subscription = Kinvey.User.lookup(query)
+      // .subscribe((user: Kinvey.User) => {
+      //   // ...
+      // });
+    }
+
+    static invokeTest() {
+      Kinvey.CustomEndpoint.execute("hello-world", {
+        username: Kinvey.User.getActiveUser().username
+        })
+        .then((response) => {
+          console.log(JSON.stringify(response));
+        })
+        .catch((error) => {
+          console.log(error.stack);
+        });
+    }
+
+    static collectionTest() {
+      const dataStore = Kinvey.DataStore.collection("hello-world");
+      const subscription = dataStore.find()
+      .subscribe((entities: {}) => {
+        console.log(entities);
+      }, (error: Kinvey.BaseError) => {
+        console.log(error);
+      }, () => {
+        console.log("finished pulling data!");
+      });
     }
 
     // static toJSON(user: User) {
