@@ -1,5 +1,9 @@
+import { Kinvey } from "kinvey-nativescript-sdk";
 import { SelectedIndexChangedEventData, TabView, TabViewItem } from "tns-core-modules/ui/tab-view";
+import view = require("ui/core/view");
+import * as dialogs from "ui/dialogs";
 import * as frameModule from "ui/frame";
+import label = require("ui/label");
 import { NavigatedData, Page } from "ui/page";
 import { BackendService } from ".././shared/services/backend.service";
 import { TabsViewModel } from "./tabs-view-model";
@@ -23,8 +27,10 @@ export function onNavigatingTo(args: NavigatedData) {
 
     if (!BackendService.isLoggedIn()) {
         return frameModule.topmost().navigate("login/login");
+    } else {
+        const usernameLabel = <label.Label>view.getViewById(page, "username");
+        usernameLabel.text = Kinvey.User.getActiveUser().username;
     }
-
 }
 
 /* ***********************************************************

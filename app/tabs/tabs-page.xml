@@ -4,7 +4,12 @@
   xmlns:browse="tabs/browse">
     <Page.actionBar>
         <ActionBar class="action-bar">
-          <Label text="{{ title }}" class="action-bar-title" />
+          <StackLayout orientation="horizontal"
+            ios:horizontalAlignment="center"
+            android:horizontalAlignment="left">
+            <Label text="{{ title }}" class="action-bar-title" />
+            <Label id="username" class="action-bar-title" />
+          </StackLayout>
         </ActionBar>
     </Page.actionBar>
 
