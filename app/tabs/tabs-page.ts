@@ -21,12 +21,10 @@ export function onNavigatingTo(args: NavigatedData) {
     const page = <Page>args.object;
     page.bindingContext = new TabsViewModel();
 
-    console.log("loading tabs-page");
-    BackendService.logout().then(() => {
-        if (!BackendService.isLoggedIn()) {
-            return frameModule.topmost().navigate("login/login");
-        }
-    });
+    if (!BackendService.isLoggedIn()) {
+        return frameModule.topmost().navigate("login/login");
+    }
+
 }
 
 /* ***********************************************************

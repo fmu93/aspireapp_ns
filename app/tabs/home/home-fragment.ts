@@ -8,3 +8,10 @@ export function onLoaded(args: EventData) {
     const component = <StackLayout>args.object;
     component.bindingContext = new HomeViewModel();
 }
+
+export function logOut() {
+    BackendService.logout()
+    .then(() => {
+        frameModule.topmost().navigate("login/login");
+    });
+}
