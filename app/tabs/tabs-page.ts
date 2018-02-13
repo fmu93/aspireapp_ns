@@ -45,3 +45,14 @@ export function onSelectedIndexChanged(args: SelectedIndexChangedEventData) {
 
     bindingContext.title = selectedTabViewItem.title;
 }
+
+export function logOut() {
+    BackendService.logout()
+    .then(() => {
+        frameModule.topmost().navigate("login/login");
+    });
+}
+
+export function deleteUser() {
+    BackendService.removeUser();
+}

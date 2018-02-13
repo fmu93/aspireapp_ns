@@ -5,5 +5,4 @@ Feel free to customize layouts and components to change how the tab view looks.
 <StackLayout class="page-content" loaded="onLoaded">
     <Label class="page-icon fa" text="&#xf015;"></Label>
     <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
-    <Button class="button1" text="Log Out" tap="logOut" />
 </StackLayout>
