@@ -21,7 +21,6 @@ export class BackendService {
     }
   
     static logout() {
-
       return Kinvey.User.logout();
     }
   

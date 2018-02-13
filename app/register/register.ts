@@ -28,21 +28,21 @@ export function completeRegistration() {
         });
         });
     }
-    console.log(user.username + "12423" + user.password);
-    const promise = BackendService.register(user)
-        // .then((user: Kinvey.User) => {
-        // localStorage.setItem('newUser', JSON.stringify(user.toJSON()));
+    console.log(user.username + " pass: " + user.password);
+    const promise = BackendService.register(user);
+    //     // .then((user: Kinvey.User) => {
+    //     // localStorage.setItem('newUser', JSON.stringify(user.toJSON()));
 
-        // return user;
-        // })
-        .then((user2: Kinvey.User) => {
-          console.log("User registered: " + user2.username);
-          console.log(BackendService.isLoggedIn());
-          frameModule.topmost().navigate("login/login");
-        })
-        .catch((error: Kinvey.BaseError) => {
-          console.log(error.stack);
-        });
+    //     // return user;
+    //     // })
+    //     .then(() => {
+    //       console.log("User registered: " + user.username);
+    //       console.log(BackendService.isLoggedIn());
+    //       frameModule.topmost().navigate("login/login");
+    //     })
+    //     .catch((error: Kinvey.BaseError) => {
+    //       console.log(error.stack);
+    //     });
 
 
     // user.signup()
