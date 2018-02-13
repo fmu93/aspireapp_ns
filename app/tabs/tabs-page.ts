@@ -1,6 +1,7 @@
 import { SelectedIndexChangedEventData, TabView, TabViewItem } from "tns-core-modules/ui/tab-view";
+import * as frameModule from "ui/frame";
 import { NavigatedData, Page } from "ui/page";
-
+import { BackendService } from ".././shared/services/backend.service";
 import { TabsViewModel } from "./tabs-view-model";
 
 /* ***********************************************************
@@ -19,6 +20,13 @@ export function onNavigatingTo(args: NavigatedData) {
 
     const page = <Page>args.object;
     page.bindingContext = new TabsViewModel();
+
+    console.log("loading tabs-page");
+    BackendService.logout().then(() => {
+        if (!BackendService.isLoggedIn()) {
+            return frameModule.topmost().navigate("login/login");
+        }
+    });
 }
 
 /* ***********************************************************

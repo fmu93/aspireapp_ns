@@ -3,8 +3,6 @@ import { User } from "./../../shared/user.model";
 
 export class BackendService {
     static isLoggedIn(): boolean {
-      console.log(Kinvey.User.getActiveUser() && true + " isLoggedIn");
-
       return Kinvey.User.getActiveUser() && true;
     }
 
@@ -26,5 +24,9 @@ export class BackendService {
   
     static resetPassword(email) {
       return Kinvey.User.resetPassword(email);
+    }
+
+    static printUser() {
+      return console.log(Kinvey.User.getActiveUser().username);
     }
   }
