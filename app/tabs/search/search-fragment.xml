@@ -8,7 +8,7 @@ Feel free to customize layouts and components to change how the tab view looks.
     <!-- <GridLayout> -->
         <ListView items="{{ memberList }}">
             <ListView.itemTemplate>
-                <Label text="{{ members }}" horizontalAlignment="left" verticalAlignment="center"/>
+                <Label text="{{ member }}" horizontalAlignment="left" verticalAlignment="center"/>
             </ListView.itemTemplate>
         </ListView>
     <!-- </GridLayout> -->

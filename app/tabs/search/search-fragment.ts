@@ -17,25 +17,26 @@ export function onLoaded(args: EventData) {
 
     // load members data
     const subscription = dataStore.find()
-    .subscribe((entities: {} | Array<object>) => {
+    .subscribe((entities: Array<{}>) => {
         console.log(JSON.stringify(entities));
 
-        // while (members.length > 0) {
-        //     members.pop();
-        // }
-        // let i;
-        // for (i = 0; i < entities.length; i++) {
-        //     members.push(entities[i]);
-        // }
+        while (members.length > 0) {
+            members.pop();
+        }
+        let i;
+        for (i = 0; i < entities.length; i++) {
+            members.push(entities[i]);
+        }
 
-        tmobservable.set("members", entities);
+        members.set("member", members);
+        tmobservable.set("memberList", members);
         component.bindingContext = tmobservable;
+
     }, (error: Kinvey.BaseError) => {
         console.log(error);
     }, () => {
         console.log("Finished pulling member data");
     });
-
 
     // component.bindingContext = new SearchViewModel();
 }
