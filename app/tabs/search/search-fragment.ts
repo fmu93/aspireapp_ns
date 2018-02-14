@@ -18,7 +18,7 @@ export function onLoaded(args: EventData) {
     // load members data
     const subscription = dataStore.find()
     .subscribe((entities: Array<{}>) => {
-        console.log(JSON.stringify(entities));
+        // console.log(JSON.stringify(entities));
 
         while (members.length > 0) {
             members.pop();

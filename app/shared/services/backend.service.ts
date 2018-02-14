@@ -78,6 +78,15 @@ export class BackendService {
       });
     }
 
+    static blobUrlTest(fileId: string) {
+      const promise = Kinvey.Files.stream(fileId)
+      .then((response) => {
+      console.log(response._downloadURL);
+
+      return response._downloadURL;
+      });
+    }
+
     // static toJSON(user: User) {
     //   return JSON.stringify(Kinvey.User.toJSON());
     // }

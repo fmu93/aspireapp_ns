@@ -13,8 +13,6 @@
           text="Log out" android.systemIcon="ic_menu_delete" android.position="popup"></ActionItem>
           <ActionItem tap="deleteUser" ios.systemIcon="16" ios.position="right"
           text="Delete user" android.systemIcon="ic_menu_delete" android.position="popup"></ActionItem>
-
-
         </ActionBar>
     </Page.actionBar>
 
