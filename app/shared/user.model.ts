@@ -1,12 +1,13 @@
 // import { Kinvey } from "kinvey-nativescript-sdk";
 require("nativescript-localstorage");
-
-// const validator = require("email-validator");
+const validator = require("email-validator");
 
 export class User {
   username?: string;
   email?: string;
   password?: string;
+  age?: number;
+  gender?: string;
 
   storeUser() {
     localStorage.setItem("newUser", JSON.stringify(this));  // TODO strings index
@@ -27,7 +28,7 @@ export class User {
     return console.log(this.username + " pass: " + this.password);
   }
 
-  // isValidEmail() {
-  //   return validator.validate(this.email);
-  // }
+  isValidEmail() {
+    return validator.validate(this.email);
+  }
 }

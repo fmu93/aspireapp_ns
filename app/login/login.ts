@@ -41,7 +41,7 @@ export function signIn(args) {
                 }
             }).catch((error: KinveyError) => {
                 dialogs.alert("Error logging in: " + user.username);
-                // console.log(error.stack);
+                // console.log(error);
         }).catch((error: Kinvey.BaseError) => {
             console.log("error loggin off");
         });

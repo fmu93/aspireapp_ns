@@ -32,6 +32,14 @@ export class BackendService {
       return Kinvey.User.exists(user.username);
     }
 
+    static stream2url(fileId: string) {
+      return Kinvey.Files.stream(fileId);
+    }
+
+    static collection2dataStore(collectionName: string) {
+      return Kinvey.DataStore.collection(collectionName, Kinvey.DataStoreType.Network);
+    }
+
     static removeUser() {
       // TODO no remove function in User
       //   const promise = Kinvey.User.remove(Kinvey.User.getActiveUser().username, {

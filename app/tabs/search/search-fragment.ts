@@ -1,6 +1,5 @@
 import { EventData, Observable } from "data/observable";
 import { ObservableArray } from "data/observable-array";
-import { Kinvey } from "kinvey-nativescript-sdk";
 import * as frameModule from "ui/frame";
 import { GridLayout } from "ui/layouts/grid-layout";
 import { BackendService } from "../.././shared/services/backend.service";
@@ -13,7 +12,7 @@ export function onLoaded(args: EventData) {
     const component = <GridLayout>args.object;
 
     members = new ObservableArray();
-    const dataStore = Kinvey.DataStore.collection("memberList", Kinvey.DataStoreType.Network);
+    const dataStore = BackendService.collection2dataStore("memberList");
 
     // load members data
     const subscription = dataStore.find()
@@ -32,7 +31,7 @@ export function onLoaded(args: EventData) {
         tmobservable.set("memberList", members);
         component.bindingContext = tmobservable;
 
-    }, (error: Kinvey.BaseError) => {
+    }, (error) => {
         console.log(error);
     }, () => {
         console.log("Finished pulling member data");

@@ -1,5 +1,4 @@
 import { EventData, Observable } from "data/observable";
-import { Kinvey } from "kinvey-nativescript-sdk";
 import { ImageSource } from "tns-core-modules/image-source/image-source";
 import view = require("ui/core/view");
 import * as frameModule from "ui/frame";
@@ -13,7 +12,7 @@ export function onLoaded(args: EventData) {
     component.bindingContext = new HomeViewModel();
 
     const img = <Image>view.getViewById(component, "img");
-    const promise = Kinvey.Files.stream("f5b138d2-d3b9-4d3e-bf05-d331871eb25d")
+    const promise = BackendService.stream2url("f5b138d2-d3b9-4d3e-bf05-d331871eb25d")
     .then((response) => {
     img.src = response._downloadURL;
     });
