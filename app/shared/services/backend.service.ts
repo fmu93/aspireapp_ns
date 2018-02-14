@@ -54,39 +54,6 @@ export class BackendService {
       // });
     }
 
-    static invokeTest() {
-      Kinvey.CustomEndpoint.execute("hello-world", {
-        username: Kinvey.User.getActiveUser().username
-        })
-        .then((response) => {
-          console.log(JSON.stringify(response));
-        })
-        .catch((error) => {
-          console.log(error.stack);
-        });
-    }
-
-    static collectionTest() {
-      const dataStore = Kinvey.DataStore.collection("hello-world");
-      const subscription = dataStore.find()
-      .subscribe((entities: {}) => {
-        console.log(entities);
-      }, (error: Kinvey.BaseError) => {
-        console.log(error);
-      }, () => {
-        console.log("finished pulling data!");
-      });
-    }
-
-    static blobUrlTest(fileId: string) {
-      const promise = Kinvey.Files.stream(fileId)
-      .then((response) => {
-      console.log(response._downloadURL);
-
-      return response._downloadURL;
-      });
-    }
-
     // static toJSON(user: User) {
     //   return JSON.stringify(Kinvey.User.toJSON());
     // }
