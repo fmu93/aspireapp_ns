@@ -10,14 +10,12 @@ const tmobservable = new Observable();
 
 export function onLoaded(args: EventData) {
     const component = <GridLayout>args.object;
-
     members = new ObservableArray();
     const dataStore = BackendService.collection2dataStore("memberList");
 
     // load members data
     const subscription = dataStore.find()
     .subscribe((entities: Array<{}>) => {
-        // console.log(JSON.stringify(entities));
 
         while (members.length > 0) {
             members.pop();
@@ -36,6 +34,4 @@ export function onLoaded(args: EventData) {
     }, () => {
         console.log("Finished pulling member data");
     });
-
-    // component.bindingContext = new SearchViewModel();
 }

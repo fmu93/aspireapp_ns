@@ -1,4 +1,5 @@
 import { Kinvey } from "kinvey-nativescript-sdk";
+import { Observable } from "tns-core-modules/ui/page/page";
 // const http = require("http");
 import { User } from "./../../shared/user.model";
 const config = require("./config");
@@ -53,16 +54,8 @@ export class BackendService {
       //     });
     }
 
-    static lookUp() {
-      // const query = new Kinvey.Query();
-      // query.equalTo('firstName', 'John');
-      // const subscription = Kinvey.User.lookup(query)
-      // .subscribe((user: Kinvey.User) => {
-      //   // ...
-      // });
+    static customEndPoint(endPoint: string, body: {}) {
+      return Kinvey.CustomEndpoint.execute(endPoint, body);
     }
 
-    // static toJSON(user: User) {
-    //   return JSON.stringify(Kinvey.User.toJSON());
-    // }
   }
