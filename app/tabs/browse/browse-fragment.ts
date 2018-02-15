@@ -1,14 +1,15 @@
 import { EventData, Observable } from "data/observable";
+import { ObservableArray } from "data/observable-array";
 import view = require("ui/core/view");
 import * as frameModule from "ui/frame";
-import { Label } from "ui/label";
 import { StackLayout } from "ui/layouts/stack-layout";
 import { BackendService } from "../.././shared/services/backend.service";
 import { User } from "./../../shared/user.model";
 import { BrowseViewModel } from "./browse-view-model";
 
-// const users = Array<{}>();
-// const tmobservable = new Observable();
+let users = new ObservableArray<User>([]);
+let isLoading: boolean = false;
+const tmobservable = new Observable();
 let component;
 
 export function onLoaded(args: EventData) {
@@ -17,8 +18,19 @@ export function onLoaded(args: EventData) {
 }
 
 export function lookUp() {
-    BackendService.customEndPoint("look-up", {message: "popo"})
-    .then((response: Array<{}>) => {
+    isLoading = true;
+    BackendService.customEndPoint("look-up", {})
+    .then((response: Array<User>) => {
+        users = new ObservableArray(response);
+        isLoading = false;
+        tmobservable.set("users", users);
+        component.bindingContext = tmobservable;
+    })
+    .catch((error) => {
+        console.log(error);
+        isLoading = false;
+    });
+
         // while (users.length > 0) {
         //     users.pop();
         // }
@@ -27,13 +39,5 @@ export function lookUp() {
         //     // console.log(response[i].username);
         //     users.push(response[i]);
         // }
-        const label = <Label>view.getViewById(component, "user-count");
-        label.text = String(response.length);
 
-        // tmobservable.set("users", users);
-        // component.bindingContext = tmobservable;
-    })
-    .catch((error) => {
-        console.log(error);
-    });
 }

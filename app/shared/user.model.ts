@@ -9,6 +9,14 @@ export class User {
   age?: number;
   gender?: string;
 
+  // constructor(options: any) {
+    // this.username: options.username;
+    // this.email: string;
+    // this.password: string;
+    // this.age: number;
+    // this.gender: string;
+  // }
+
   storeUser() {
     localStorage.setItem("newUser", JSON.stringify(this));  // TODO strings index
   }

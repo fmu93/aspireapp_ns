@@ -6,7 +6,6 @@ Feel free to customize layouts and components to change how the tab view looks.
     <Label class="page-icon fa" text="&#xf1ea;"></Label>
     <Label class="page-placeholder" text="<!-- user explore -->"></Label>
     <Button text="lookUp" tap="lookUp" class="button1"  horizontalAlignment="center"/>
-    <Label text="Amount of users" id="user-count"  horizontalAlignment="center"/>
     <ListView items="{{ users }}">
         <ListView.itemTemplate>
             <Label text="{{ username }}" horizontalAlignment="left" verticalAlignment="center"/>
