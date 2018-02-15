@@ -1,31 +1,29 @@
 import { EventData, Observable } from "data/observable";
 import { ObservableArray } from "data/observable-array";
+import { StackLayout } from "tns-core-modules/ui/layouts/stack-layout/stack-layout";
 import * as frameModule from "ui/frame";
-import { GridLayout } from "ui/layouts/grid-layout";
 import { BackendService } from "../.././shared/services/backend.service";
 import { SearchViewModel } from "./search-view-model";
 
-let members;
+const members = new ObservableArray<Member>();
 const tmobservable = new Observable();
 
 export function onLoaded(args: EventData) {
-    const component = <GridLayout>args.object;
-    members = new ObservableArray();
+    const component = <StackLayout>args.object;
     const dataStore = BackendService.collection2dataStore("memberList");
 
     // load members data
     const subscription = dataStore.find()
     .subscribe((entities: Array<{}>) => {
-
         while (members.length > 0) {
             members.pop();
         }
         let i;
         for (i = 0; i < entities.length; i++) {
-            members.push(entities[i]);
+            if ("member" in entities[i]) {
+                members.push(entities[i]);
+            }
         }
-
-        members.set("member", members);
         tmobservable.set("memberList", members);
         component.bindingContext = tmobservable;
 
@@ -34,4 +32,8 @@ export function onLoaded(args: EventData) {
     }, () => {
         console.log("Finished pulling member data");
     });
+}
+
+class Member {
+    member?: string;
 }

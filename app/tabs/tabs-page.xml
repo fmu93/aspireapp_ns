@@ -10,9 +10,11 @@
             <Label id="username" class="action-bar-title" />
           </StackLayout>
           <ActionItem tap="logOut" ios.systemIcon="16" ios.position="right"
-          text="Log out" android.systemIcon="ic_menu_delete" android.position="popup"></ActionItem>
+          text="Log out" android.position="popup"></ActionItem>
           <ActionItem tap="deleteUser" ios.systemIcon="16" ios.position="right"
-          text="Delete user" android.systemIcon="ic_menu_delete" android.position="popup"></ActionItem>
+          text="Delete user" android.position="popup"></ActionItem>
+          <ActionItem tap="refreshTabsPage" ios.systemIcon="16" ios.position="right"
+          text="Refresh" android.position="popup"></ActionItem>
         </ActionBar>
     </Page.actionBar>
 

@@ -2,14 +2,12 @@
 This is the component view that represents the 'Search' tab.
 Feel free to customize layouts and components to change how the tab view looks.
 -->
-<GridLayout class="page-content" loaded="onLoaded">
-    <Label class="page-icon fa" text="&#xf002;"></Label>
-    <Label class="page-placeholder" text="List from collection"></Label>
-    <!-- <GridLayout> -->
-        <ListView items="{{ memberList }}">
-            <ListView.itemTemplate>
-                <Label text="{{ member }}" horizontalAlignment="left" verticalAlignment="center"/>
-            </ListView.itemTemplate>
-        </ListView>
-    <!-- </GridLayout> -->
-</GridLayout>
+<StackLayout class="page-content" loaded="onLoaded">
+    <Label class="page-icon fa" text="&#xf002;" verticalAlignment="center"></Label>
+    <Label class="page-placeholder" text="List from collection" verticalAlignment="center"></Label>
+    <ListView items="{{ memberList }}">
+        <ListView.itemTemplate>
+            <Label text="{{ member }}" horizontalAlignment="left" verticalAlignment="center"/>
+        </ListView.itemTemplate>
+    </ListView>
+</StackLayout>

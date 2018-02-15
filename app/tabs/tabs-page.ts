@@ -56,3 +56,7 @@ export function logOut() {
 export function deleteUser() {
     BackendService.removeUser();
 }
+
+export function refreshTabsPage() {
+    return frameModule.topmost().navigate("tabs/tabs-page");
+}

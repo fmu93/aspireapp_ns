@@ -22,22 +22,14 @@ export function lookUp() {
     BackendService.customEndPoint("look-up", {})
     .then((response: Array<User>) => {
         users = new ObservableArray(response);
-        isLoading = false;
         tmobservable.set("users", users);
         component.bindingContext = tmobservable;
+        isLoading = false;
+        console.log("Finished lookup");
     })
     .catch((error) => {
         console.log(error);
         isLoading = false;
     });
-
-        // while (users.length > 0) {
-        //     users.pop();
-        // }
-        // let i;
-        // for (i = 0; response.length; i++) {
-        //     // console.log(response[i].username);
-        //     users.push(response[i]);
-        // }
 
 }
