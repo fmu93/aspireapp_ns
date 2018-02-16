@@ -7,7 +7,7 @@ import * as app from "application";
 import "./bundle-config";
 import "./shared/services/kinvey.common";
 
-app.start({ moduleName: "./tabs/tabs-page" });
+app.start({ moduleName: "./views/tabs/tabs-page" });
 
 /*
 Do not place any code after the application has been started as it will not

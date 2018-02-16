@@ -5,7 +5,7 @@ import * as dialogs from "ui/dialogs";
 import * as frameModule from "ui/frame";
 import label = require("ui/label");
 import { NavigatedData, Page } from "ui/page";
-import { BackendService } from ".././shared/services/backend.service";
+import { BackendService } from "./../../shared/services/backend.service";
 import { TabsViewModel } from "./tabs-view-model";
 
 /* ***********************************************************
@@ -26,7 +26,7 @@ export function onNavigatingTo(args: NavigatedData) {
     page.bindingContext = new TabsViewModel();
 
     if (!BackendService.isLoggedIn()) {
-        return frameModule.topmost().navigate("login/login");
+        return frameModule.topmost().navigate("views/login/login");
     } else {
         const usernameLabel = <label.Label>view.getViewById(page, "username");
         usernameLabel.text = Kinvey.User.getActiveUser().username;

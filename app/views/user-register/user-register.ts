@@ -1,7 +1,6 @@
 import * as application from "application";
 import { Color } from "color";
-import { EventData, Observable } from "data/observable";
-import * as observable from "data/observable";
+import { EventData, fromObject, Observable } from "data/observable";
 import * as platform from "platform";
 import { View } from "ui/core/view";
 import { EditableTextBase } from "ui/editable-text-base";
@@ -10,10 +9,11 @@ import { Page } from "ui/page";
 import * as linearGradient from "../../common/linear-gradient";
 
 declare let android: any;
+// const observable = new Observable();
 
 export function onPageNavigatingTo(args: EventData) {
     const page = <Page>args.object;
-    const viewModel = observable.fromObject({
+    const viewModel = fromObject({
         username: "ILoveNS",
         email: "team@mail.com",
         password: "password",

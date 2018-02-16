@@ -5,7 +5,7 @@ import view = require("ui/core/view");
 import * as frameModule from "ui/frame";
 import { Image } from "ui/image";
 import { StackLayout } from "ui/layouts/stack-layout";
-import { BackendService } from "../.././shared/services/backend.service";
+import { BackendService } from "../../../shared/services/backend.service";
 import { HomeViewModel } from "./home-view-model";
 
 export function onLoaded(args: EventData) {

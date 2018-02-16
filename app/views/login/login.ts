@@ -5,8 +5,8 @@ import * as dialogs from "ui/dialogs";
 import { AnimationCurve } from "ui/enums";
 import * as frameModule from "ui/frame";
 import { Page } from "ui/page";
-import { BackendService } from "../shared/services/backend.service";
-import { User } from "./../shared/user.model";
+import { BackendService } from "./../../shared/services/backend.service";
+import { User } from "./../../shared/user.model";
 
 const user = new User();
 
@@ -49,5 +49,5 @@ export function signIn(args) {
 }
 
 export function register(args) {
-    frameModule.topmost().navigate("views/user-register/user-register");
+    frameModule.topmost().navigate("views/register/register");
 }

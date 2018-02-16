@@ -1,9 +1,9 @@
 import { Kinvey } from "kinvey-nativescript-sdk";
 import * as dialogs from "ui/dialogs";
 import * as frameModule from "ui/frame";
-import { BackendService } from "../shared/services/backend.service";
+import { BackendService } from "./../../shared/services/backend.service";
+import { User } from "./../../shared/user.model";
 import { LoginService } from "./../login/login.service";
-import { User } from "./../shared/user.model";
 
 const user = new User();
 
