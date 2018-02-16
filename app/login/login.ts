@@ -49,5 +49,5 @@ export function signIn(args) {
 }
 
 export function register(args) {
-    frameModule.topmost().navigate("register/register");
+    frameModule.topmost().navigate("views/user-register/user-register");
 }

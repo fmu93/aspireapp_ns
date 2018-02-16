@@ -8,6 +8,8 @@ export class User {
   password?: string;
   age?: number;
   gender?: string;
+  description?: string;
+  imageList?: {};
 
   // constructor(options: any) {
     // this.username: options.username;
