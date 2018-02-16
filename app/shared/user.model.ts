@@ -1,8 +1,10 @@
+import { Observable } from "tns-core-modules/ui/page/page";
+
 // import { Kinvey } from "kinvey-nativescript-sdk";
 require("nativescript-localstorage");
 const validator = require("email-validator");
 
-export class User {
+export class User extends Observable {
   username?: string;
   email?: string;
   password?: string;
@@ -11,13 +13,9 @@ export class User {
   description?: string;
   imageList?: {};
 
-  // constructor(options: any) {
-    // this.username: options.username;
-    // this.email: string;
-    // this.password: string;
-    // this.age: number;
-    // this.gender: string;
-  // }
+  constructor() {
+    super();
+  }
 
   storeUser() {
     localStorage.setItem("newUser", JSON.stringify(this));  // TODO strings index

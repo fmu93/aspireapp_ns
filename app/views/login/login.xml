@@ -1,6 +1,6 @@
 <Page loaded="onLoaded">
     <StackLayout orientation="vertical">
-        <Image src="res://logo" class="fade" id="logo" stretch="none" horizontalAlignment="center" ></Image>
+        <Image src="res://logo" class="fade-in" id="logo" stretch="none" horizontalAlignment="center" ></Image>
         <TextField id="username" text="{{ username }}" hint="Username" keyboardType="email" autocorrect="false" autocapitalizationType="none" />
         <TextField id="password" secure="true" text="{{ password }}" hint="Password" /> 
 

@@ -2,7 +2,6 @@ import { fromObject } from "data/observable";
 import { Kinvey, KinveyError } from "kinvey-nativescript-sdk";
 import { View } from "ui/core/view";
 import * as dialogs from "ui/dialogs";
-import { AnimationCurve } from "ui/enums";
 import * as frameModule from "ui/frame";
 import { Page } from "ui/page";
 import { BackendService } from "./../../shared/services/backend.service";
@@ -16,14 +15,6 @@ export function onLoaded(args) {
 
     const page = <Page>args.object;
     page.bindingContext = user;
-
-    const logo = <View> page.getViewById("logo");
-    logo.animate({
-        opacity: 1,
-        duration: 2000,
-        // translate: { x: 0, y: 100},
-        curve: AnimationCurve.easeOut
-    });
  }
 
 export function signIn(args) {
