@@ -4,17 +4,18 @@
   xmlns:browse="tabs/browse">
     <Page.actionBar>
         <ActionBar class="action-bar">
-          <StackLayout orientation="horizontal"
-          ios:horizontalAlignment="center" android:horizontalAlignment="center">
+
+          <StackLayout orientation="horizontal">
             <Label text="{{ title }}" class="action-bar-title" />
             <Label id="username" class="action-bar-title" />
           </StackLayout>
+          
+          <ActionItem tap="refreshTabsPage" ios.systemIcon="16" ios.position="right"
+          text="Refresh" android.position="popup"></ActionItem>
           <ActionItem tap="logOut" ios.systemIcon="16" ios.position="right"
           text="Log out" android.position="popup"></ActionItem>
           <ActionItem tap="deleteUser" ios.systemIcon="16" ios.position="right"
           text="Delete user" android.position="popup"></ActionItem>
-          <ActionItem tap="refreshTabsPage" ios.systemIcon="16" ios.position="right"
-          text="Refresh" android.position="popup"></ActionItem>
         </ActionBar>
     </Page.actionBar>
 
@@ -52,6 +53,7 @@
              <search:search-fragment/>
           </TabViewItem.view>
         </TabViewItem>
+
       </TabView.items>
     </TabView> 
 </Page>

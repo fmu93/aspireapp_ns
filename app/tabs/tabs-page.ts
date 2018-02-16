@@ -58,5 +58,7 @@ export function deleteUser() {
 }
 
 export function refreshTabsPage() {
+    console.log("Refresh");
+
     return frameModule.topmost().navigate("tabs/tabs-page");
 }

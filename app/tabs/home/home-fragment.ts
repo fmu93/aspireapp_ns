@@ -1,4 +1,5 @@
 import { EventData, Observable } from "data/observable";
+import * as Toast from "nativescript-toast";
 import { ImageSource } from "tns-core-modules/image-source/image-source";
 import view = require("ui/core/view");
 import * as frameModule from "ui/frame";
@@ -16,5 +17,8 @@ export function onLoaded(args: EventData) {
     .then((response) => {
     img.src = response._downloadURL;
     });
+}
 
+export function imgTap() {
+    Toast.makeText("Foxy fox!").show();
 }
