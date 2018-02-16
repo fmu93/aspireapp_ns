@@ -1,7 +1,7 @@
 <Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="page"
-  xmlns:home="tabs/home"
-  xmlns:search="tabs/search"
-  xmlns:browse="tabs/browse">
+  xmlns:home="views/tabs/home"
+  xmlns:search="views/tabs/search"
+  xmlns:browse="views/tabs/browse">
     <Page.actionBar>
         <ActionBar class="action-bar">
 

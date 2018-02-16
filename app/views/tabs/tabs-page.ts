@@ -49,7 +49,7 @@ export function onSelectedIndexChanged(args: SelectedIndexChangedEventData) {
 export function logOut() {
     BackendService.logout()
     .then(() => {
-        frameModule.topmost().navigate("login/login");
+        frameModule.topmost().navigate("views/login/login");
     });
 }
 
@@ -60,5 +60,5 @@ export function deleteUser() {
 export function refreshTabsPage() {
     console.log("Refresh");
 
-    return frameModule.topmost().navigate("tabs/tabs-page");
+    return frameModule.topmost().navigate("views/tabs/tabs-page");
 }

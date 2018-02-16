@@ -42,7 +42,7 @@ export function completeRegistration() {
             })
             .then(() => {
             dialogs.alert("User registered and stored: " + user.username);
-            frameModule.topmost().navigate("login/login");
+            frameModule.topmost().navigate("views/login/login");
             })
             .catch((error: Kinvey.BaseError) => {
             console.log(error.stack);
