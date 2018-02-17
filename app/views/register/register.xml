@@ -1,10 +1,57 @@
-<Page loaded="onLoaded">
-    <StackLayout>
-        <Image src="res://logo" stretch="none" horizontalAlignment="center"/>
+<Page loaded="onLoaded"
+        cssFile="~/views/login/login.css"
+        tap="onPageTapped">
 
-        <TextField text="{{ username }}" id="username" hint="username" autocorrect="false" autocapitalizationType="none" />
-        <TextField text="{{ password }}" id="password" secure="true" hint="Password" />
+    <Page.actionBar>
+        <ActionBar title="User profile" automationText="ActionBar">
+            <NavigationButton icon="res://ic_back" tap="goBack" automationText="GoBack" />
+        </ActionBar>
+    </Page.actionBar>
 
-        <Button text="Sign Up" tap="signUp" />
-    </StackLayout>
+    <GridLayout id="example-background" loaded="onBackgroundLoaded">
+        <GridLayout id="form-content" class="form-content" rows="auto,*,auto" loaded="onContentLoaded">
+            <StackLayout class="top-border" row="0"/>
+            <ScrollView row="1" class="fields-section">
+                <StackLayout>
+                    
+                    <GridLayout ios:columns="auto,*" android:rows="auto, auto" verticalAlignment="top">
+                        <Label text="Username" class="field-title" />
+                        <TextField id="username" text="{{ username }}" class="field" ios:col="1" android:row="1" tap="onTextInputTapped" />
+                    </GridLayout>
+                    <StackLayout class="line"/>
+                    
+                    <GridLayout ios:columns="auto,*" android:rows="auto, auto" verticalAlignment="top">
+                        <Label text="Email" class="field-title" />
+                        <TextField id="email" text="{{ email }}" class="field" ios:col="1" android:row="1" tap="onTextInputTapped" />
+                    </GridLayout>
+                    <StackLayout class="line"/>
+                    
+                    <GridLayout ios:columns="auto,*" android:rows="auto, auto" verticalAlignment="top">
+                        <Label text="Password" class="field-title" />
+                        <TextField id="password" text="{{ password }}" secure="{{ showPassword, !showPassword }}" class="field"  ios:col="1" android:row="1" tap="onTextInputTapped" />
+                    </GridLayout>
+                    <StackLayout class="line"/>
+                    <StackLayout orientation="horizontal" tap="onShowPasswordTapped">
+                        <Image class="checkbox" />
+                        <Label text="Show password" class="field-switch-title" />
+                    </StackLayout>
+                    <StackLayout class="line"/>
+                    
+                    <StackLayout>
+                        <Label text="Bio" class="field-title" ios:visibility="collapse"/>
+                        <TextView id="bio" text="{{ bio }}" android:hint="Add bio" ios:hint="Bio" class="field-multiline" tap="onTextInputTapped"/>
+                    </StackLayout>
+                    <StackLayout class="line"/>
+                    
+                    <GridLayout columns="*, auto" verticalAlignment="top">
+                        <Label text="Public profile" class="field-switch-title" />
+                        <Switch checked="{{ isPublic }}" class="field-switch" />
+                    </GridLayout>
+                </StackLayout>
+            </ScrollView>
+            <Button text="Register" class="update" tap="signUp" row="2"/>
+        </GridLayout>
+        
+        <Image src="res://logo" id="image" class="logo-picture" horizontalAlignment="center" stretch="none" tap="onProfilePictureTapped"/>
+    </GridLayout>
 </Page>

@@ -6,6 +6,8 @@
 }
 // Common page class
 .page-content {
+    background-color: #455B66;
+
     .page-placeholder {
         color: $page-icon-color;
         margin: 5%;
@@ -24,11 +26,25 @@
 }
 
 //Action bar
-ActionBar .action-bar-title {
-    horizontal-align: center;
-    margin: 5;
-    text-align: left;
-    width: auto;
+ActionBar {
+    background-color: #151F2F;
+    color: white;
+
+    .action-bar-title {
+        horizontal-align: center;
+        margin: 5;
+        text-align: left;
+        width: auto;
+    }
 }
 
+.content-background {
+    background-color: #E5E5E8;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+}
+
+Page, ExamplePage, DrawerPage {
+    background-color: #151F2F;
+}
 

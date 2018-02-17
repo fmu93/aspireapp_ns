@@ -1,6 +1,9 @@
+import { EventData, fromObject, Observable } from "data/observable";
 import { Kinvey } from "kinvey-nativescript-sdk";
 import * as dialogs from "ui/dialogs";
+import { EditableTextBase } from "ui/editable-text-base";
 import * as frameModule from "ui/frame";
+import { Page } from "ui/page";
 import { BackendService } from "./../../shared/services/backend.service";
 import { User } from "./../../shared/user.model";
 import { LoginService } from "./../login/login.service";
@@ -24,7 +27,13 @@ export function signUp() {
             console.log("error loggin off");
         });
         });
+    } else if (user.isValidEmail()) {
+        completeRegistration();
     } else {
+        dialogs.alert({
+            message: "Enter a valid email address.",
+            okButtonText: "OK"
+        });
         completeRegistration();
     }
 }
@@ -51,13 +60,16 @@ export function completeRegistration() {
     });
 }
 
-// export function register() {
-// 	if (user.isValidEmail()) {
-// 		completeRegistration();
-// 	} else {
-// 		dialogsModule.alert({
-// 			message: "Enter a valid email address.",
-// 			okButtonText: "OK"
-// 		});
-// 	}
-// }
+let closeTimeout = 0;
+export function onPageTapped(args: EventData) {
+    const page = <Page>args.object;
+    if (!closeTimeout) {
+        closeTimeout = setTimeout(() => {
+            page.getViewById<EditableTextBase>("username").dismissSoftInput();
+            page.getViewById<EditableTextBase>("email").dismissSoftInput();
+            page.getViewById<EditableTextBase>("password").dismissSoftInput();
+            page.getViewById<EditableTextBase>("bio").dismissSoftInput();
+            closeTimeout = 0;
+        }, 20);
+    }
+}

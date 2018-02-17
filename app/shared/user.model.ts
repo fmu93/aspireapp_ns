@@ -10,7 +10,7 @@ export class User extends Observable {
   password?: string;
   age?: number;
   gender?: string;
-  description?: string;
+  bio?: string;
   imageList?: {};
 
   constructor() {

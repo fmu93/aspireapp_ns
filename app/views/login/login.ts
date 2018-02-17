@@ -14,6 +14,15 @@ export function onLoaded(args) {
     user.retrieveUser();
 
     const page = <Page>args.object;
+    // const viewModel = fromObject({
+    //     username: user.username,
+    //     email: user.email,
+    //     password: user.password,
+    //     bio: user.bio,
+    //     isPublic: true,
+    //     showPassword: false
+    // });
+    // page.bindingContext = viewModel;
     page.bindingContext = user;
  }
 

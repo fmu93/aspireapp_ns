@@ -8,22 +8,25 @@ import { BackendService } from "../../../shared/services/backend.service";
 import { User } from "../../../shared/user.model";
 import { BrowseViewModel } from "./browse-view-model";
 
+let users = new ObservableArray<User>();
 let isLoading: boolean = false;
-const browserViewModel = new BrowseViewModel();
+const tmobservable = new Observable();
+let component;
 
 export function onLoaded(args: EventData) {
-    const component = <StackLayout>args.object;
-    component.bindingContext = browserViewModel;
+    component = <StackLayout>args.object;
+    component.bindingContext = new BrowseViewModel();
 }
 
 export function lookUp() {
     isLoading = true;
-
     BackendService.customEndPoint("look-up", {})
     .then((response: Array<User>) => {
-        browserViewModel.setUsers(new ObservableArray(response));
+        users = new ObservableArray(response);
+        tmobservable.set("users", users);
+        component.bindingContext = tmobservable;
         isLoading = false;
-        console.log("Finished lookup ");
+        console.log("Finished lookup");
         Toast.makeText("Other users loaded").show();
     })
     .catch((error) => {
