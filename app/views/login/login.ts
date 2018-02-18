@@ -1,7 +1,8 @@
-import { fromObject } from "data/observable";
+import { EventData, fromObject } from "data/observable";
 import { Kinvey, KinveyError } from "kinvey-nativescript-sdk";
 import { View } from "ui/core/view";
 import * as dialogs from "ui/dialogs";
+import { EditableTextBase } from "ui/editable-text-base";
 import * as frameModule from "ui/frame";
 import { Page } from "ui/page";
 import { BackendService } from "./../../shared/services/backend.service";
@@ -50,4 +51,16 @@ export function signIn(args) {
 
 export function register(args) {
     frameModule.topmost().navigate("views/register/register");
+}
+
+let closeTimeout = 0;
+export function onPageTapped(args: EventData) {
+    const page = <Page>args.object;
+    if (!closeTimeout) {
+        closeTimeout = setTimeout(() => {
+            page.getViewById<EditableTextBase>("username").dismissSoftInput();
+            page.getViewById<EditableTextBase>("password").dismissSoftInput();
+            closeTimeout = 0;
+        }, 20);
+    }
 }

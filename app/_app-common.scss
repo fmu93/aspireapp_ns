@@ -21,7 +21,7 @@
         vertical-align: top;
         horizontal-align: center;
         color: $page-icon-color;
-        margin-top: 20%;
+        margin-top: 20;
     }
 }
 
@@ -29,13 +29,12 @@
 ActionBar {
     background-color: #151F2F;
     color: white;
+}
 
-    .action-bar-title {
-        horizontal-align: center;
-        margin: 5;
-        text-align: left;
-        width: auto;
-    }
+.action-bar-title {
+    margin: 5;
+    width: fit-content;
+    text-align: center;
 }
 
 .content-background {
@@ -44,7 +43,13 @@ ActionBar {
     background-position: 0 0;
 }
 
+.listStyle {
+    padding: 10;
+    horizontal-align: left;
+    vertical-align: center;
+}
+
 Page, ExamplePage, DrawerPage {
-    background-color: #151F2F;
+    background-color: rgb(44, 49, 58);
 }
 

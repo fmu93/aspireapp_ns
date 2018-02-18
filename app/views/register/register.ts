@@ -1,12 +1,12 @@
 import { EventData, fromObject, Observable } from "data/observable";
 import { Kinvey } from "kinvey-nativescript-sdk";
+import { View } from "ui/core/view";
 import * as dialogs from "ui/dialogs";
 import { EditableTextBase } from "ui/editable-text-base";
 import * as frameModule from "ui/frame";
 import { Page } from "ui/page";
 import { BackendService } from "./../../shared/services/backend.service";
 import { User } from "./../../shared/user.model";
-import { LoginService } from "./../login/login.service";
 
 const user = new User();
 
@@ -58,6 +58,10 @@ export function completeRegistration() {
             });
         }
     });
+}
+
+export function goBack() {
+    return frameModule.topmost().navigate("views/login/login");
 }
 
 let closeTimeout = 0;

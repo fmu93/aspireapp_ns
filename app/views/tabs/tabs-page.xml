@@ -5,10 +5,10 @@
     <Page.actionBar>
         <ActionBar class="action-bar">
 
-          <StackLayout orientation="horizontal">
-            <Label text="{{ title }}" class="action-bar-title" />
-            <Label id="username" class="action-bar-title" />
-          </StackLayout>
+          <GridLayout columns="*, auto, *">
+            <Label text="{{ title }}" col="1" class="action-bar-title" />
+            <Label id="username" text="{{ username }}" col="2" class="action-bar-title fa" />
+          </GridLayout>
           
           <ActionItem tap="refreshTabsPage" ios.systemIcon="16" ios.position="right"
           text="Refresh" android.position="popup"></ActionItem>

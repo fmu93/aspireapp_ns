@@ -28,8 +28,9 @@ export function onNavigatingTo(args: NavigatedData) {
     if (!BackendService.isLoggedIn()) {
         return frameModule.topmost().navigate("views/login/login");
     } else {
+        const charCode = 0xf2bd;
         const usernameLabel = <label.Label>view.getViewById(page, "username");
-        usernameLabel.text = Kinvey.User.getActiveUser().username;
+        usernameLabel.text =  Kinvey.User.getActiveUser().username + " " + String.fromCharCode(charCode);
     }
 }
 

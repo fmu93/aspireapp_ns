@@ -3,6 +3,7 @@ import { Observable } from "tns-core-modules/ui/page/page";
 // const http = require("http");
 import { User } from "./../../shared/user.model";
 const config = require("./config");
+import fs = require("file-system");
 
 export class BackendService {
     static isLoggedIn(): boolean {
@@ -56,6 +57,23 @@ export class BackendService {
 
     static customEndPoint(endPoint: string, body: {}) {
       return Kinvey.CustomEndpoint.execute(endPoint, body);
+    }
+
+    static uploadImage(filePath: string, fileId: string) {
+      const file = fs.File.fromPath(filePath);
+      const metadata = {
+        filename: fileId + file.extension,
+        mimeType: "image/png", // TODO format
+        size: file.readSync().length,
+        public: true
+      };
+      const promise = Kinvey.Files.upload(file, metadata)
+        .then((_result: any) => {
+          console.log("Upload: " + JSON.stringify(_result));
+        })
+        .catch((error: Kinvey.BaseError) => {
+          console.log(error);
+        });
     }
 
   }

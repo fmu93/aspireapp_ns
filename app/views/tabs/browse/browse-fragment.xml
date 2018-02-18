@@ -6,9 +6,13 @@ Feel free to customize layouts and components to change how the tab view looks.
     <Label class="page-icon fa" text="&#xf1ea;"></Label>
     <Label class="page-placeholder" text="<!-- user explore -->"></Label>
     <Button text="lookUp" tap="lookUp" class="button1"  horizontalAlignment="center"/>
-    <ListView items="{{ users }}">
+    <ListView id="userList" items="{{ users }}" margin="10">
         <ListView.itemTemplate>
-            <Label text="{{ username }}" horizontalAlignment="left" verticalAlignment="center"/>
+            <GridLayout class="listStyle" row="*" columns="*,*,3*">
+                <Label text="{{ username }}" col="0" />
+                <Label text="{{ bio }}" col="1" />
+                <Label text="{{ _id }}" col="2" />
+            </GridLayout>
         </ListView.itemTemplate>
     </ListView>
 </StackLayout>
