@@ -41,24 +41,13 @@ export function imgUpload() {
         return context.present();
     }).then((selection) => {
         selection.forEach((element) => {
-            // homeViewModel.img.src = element.fileUri;
             BackendService.uploadImage(element.fileUri, String(milliseconds));
-
-            // element.getImage().then((imageSource) => {
-            //     console.log("This image: " + String(imageSource));
-            //     // const folder = fs.knownFolders.documents();
-            //     // const path = fs.path.join(folder.path, milliseconds + ".png");
-            //     BackendService.uploadImage(String(imageSource), String(milliseconds));
-            //     // const saved = imageSource.saveToFile(path, "png");
-            //     // homeViewModel.img.src = path;
-            //     // console.log("Saved image: " + path);
-            // });
         });
     });
 }
 
 export function imgDownload() {
-    const promise = BackendService.stream2url("65949bb1-a948-43d5-916a-5370dcb19c5e")
+    const promise = BackendService.stream2url("6198d3c2-a571-42a4-be0b-5cf4716655c8")
     .then((response) => {
         homeViewModel.img.src = response._downloadURL;
         console.log("Downloaded: " + homeViewModel.img.src);

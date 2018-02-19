@@ -44,9 +44,14 @@ ActionBar {
 }
 
 .listStyle {
-    padding: 10;
+    padding: 5;
     horizontal-align: left;
     vertical-align: center;
+}
+
+.listViewStyle {
+    margin: 10;
+    background-color: #E5E5E8;
 }
 
 Page, ExamplePage, DrawerPage {

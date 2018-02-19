@@ -59,7 +59,8 @@ export class BackendService {
       return Kinvey.CustomEndpoint.execute(endPoint, body);
     }
 
-    static uploadImage(filePath: string, fileId: string) {
+    static uploadImage(filePathShort: string, fileId: string) {
+      const filePath = fs.path.join(fs.knownFolders.currentApp().path, filePathShort);
       const file = fs.File.fromPath(filePath);
       const metadata = {
         filename: fileId + file.extension,
@@ -68,8 +69,8 @@ export class BackendService {
         public: true
       };
       const promise = Kinvey.Files.upload(file, metadata)
-        .then((_result: any) => {
-          console.log("Upload: " + JSON.stringify(_result));
+        .then((result: any) => {
+          console.log("Uploaded: " + JSON.stringify(result));
         })
         .catch((error: Kinvey.BaseError) => {
           console.log(error);

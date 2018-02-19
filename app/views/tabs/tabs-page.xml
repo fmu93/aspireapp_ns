@@ -7,7 +7,7 @@
 
           <GridLayout columns="*, auto, *">
             <Label text="{{ title }}" col="1" class="action-bar-title" />
-            <Label id="username" text="{{ username }}" col="2" class="action-bar-title fa" />
+            <Label id="username" text="{{ username }}" col="2" class="action-bar-title fa" horizontalAlignment="right" />
           </GridLayout>
           
           <ActionItem tap="refreshTabsPage" ios.systemIcon="16" ios.position="right"
