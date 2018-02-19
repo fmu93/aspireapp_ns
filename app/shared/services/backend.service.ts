@@ -6,7 +6,7 @@ import { getString, setString } from "application-settings";
 import fs = require("file-system");
 
 const tokenKey = "token";
-const currentUser = new User();
+// const currentUser = new User();
 
 export class BackendService {
 
@@ -22,9 +22,14 @@ export class BackendService {
     setString("token", theToken);
   }
 
-  static getCurrentUser(): User {
-    return currentUser;
-  }
+  // static getCurrentUser(): User {
+  //   return currentUser;
+  // }
+
+  // static setCurrentUser(firebaseUser: firebase.User) {
+  //   currentUser.username = firebaseUser.name;
+  //   currentUser.email = firebaseUser.email;
+  // }
 
   static register(user: User) {
     return firebase.createUser({
@@ -62,48 +67,40 @@ export class BackendService {
     }).then((response) => {
         console.log(JSON.stringify(response));
         config.uid = response.uid;
+        BackendService.token = response.uid;
 
         return response;
       });
   }
 
   static logout() {
-    this.token = "";
+    BackendService.token = "";
 
     return firebase.logout();
   }
 
   static resetPassword(email) {
-    // return Kinvey.User.resetPassword(email);
+    // ..
   }
 
   static exists(user: User) {
-    // return Kinvey.User.exists(user.username);
+    // ..
   }
 
   static stream2url(fileId: string) {
-    // return Kinvey.Files.stream(fileId);
+    // ..
   }
 
   static collection2dataStore(collectionName: string) {
-    // return Kinvey.DataStore.collection(collectionName, Kinvey.DataStoreType.Network);
+    // ..
   }
 
   static removeUser() {
-    // TODO no remove function in User
-    //   const promise = Kinvey.User.remove(Kinvey.User.getActiveUser().username, {
-    //     hard: true
-    //   })
-    //     .then(() => {
-    //       // ...
-    //     })
-    //     .catch((error: Kinvey.BaseError) => {
-    //       // ...
-    //     });
+    // ..
   }
 
   static customEndPoint(endPoint: string, body: {}) {
-    // return Kinvey.CustomEndpoint.execute(endPoint, body);
+    // ..
   }
 
   static uploadImage(filePathShort: string, fileId: string) {

@@ -31,7 +31,9 @@ export function onNavigatingTo(args: NavigatedData) {
     } else {
         const charCode = 0xf2bd;
         const usernameLabel = <label.Label>view.getViewById(page, "username");
-        usernameLabel.text =  BackendService.getCurrentUser().username + " " + String.fromCharCode(charCode);
+        firebase.getCurrentUser().then((user) => {
+            usernameLabel.text =  user.email.split("@")[0] + " " + String.fromCharCode(charCode);
+        });
     }
 }
 

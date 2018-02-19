@@ -4,24 +4,7 @@ You can use this file to perform app-level initialization, but the primary
 purpose of the file is to pass control to the app’s first module.
 */
 import * as app from "application";
-import firebase = require("nativescript-plugin-firebase");
 import "./bundle-config";
-import { BackendService } from "./shared/services/backend.service";
-// const config = require("./shared/services/config");
-
-firebase.init({
-    storageBucket: "gs://aspireapp-2dff5.appspot.com",
-    onAuthStateChanged(data) { // optional but useful to immediately re-logon the user when he re-visits your app
-        console.log(data.loggedIn ? "Logged in to firebase" : "Logged out from firebase");
-        if (data.loggedIn) {
-            BackendService.token = data.user.uid;
-            console.log("user's email address: " + (data.user.email ? data.user.email : "N/A"));
-        } else {
-            BackendService.token = "";
-        }
-    }})
-    .then((instance) => console.log("Firebase initialised!!"))
-    .catch((error) => console.log(error));
 
 app.start({ moduleName: "./views/tabs/tabs-page" });
 

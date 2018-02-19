@@ -8,7 +8,7 @@ import { Page } from "ui/page";
 import { BackendService } from "./../../shared/services/backend.service";
 import { User } from "./../../shared/user.model";
 
-const user = BackendService.getCurrentUser();
+const user = new User();
 
 export function onLoaded(args) {
     // check if existing user on local storage
@@ -19,24 +19,24 @@ export function onLoaded(args) {
  }
 
 export function signIn(args) {
-        // Actually, the only way to be logged in at this point is after successful regisrtration
-        // or successful login. Maybe a switch user does make sense.
-        const promise = BackendService.logout()
+    // Actually, the only way to be logged in at this point is after successful regisrtration
+    // or successful login. Maybe a switch user does make sense.
+    const promise = BackendService.logout()
+    .then(() => {
+        const promise2 = BackendService.login(user)
         .then(() => {
-            const promise2 = BackendService.login(user)
-            .then(() => {
-                if (BackendService.isLoggedIn()) {
-                    frameModule.topmost().navigate("views/tabs/tabs-page");
-                } else {
-                    dialogs.alert("user not logged in: " + user.username);
-                }
-            }).catch((error) => {
-                dialogs.alert("Error logging in: " + user.username);
-                // console.log(error);
+            if (BackendService.isLoggedIn()) {
+                frameModule.topmost().navigate("views/tabs/tabs-page");
+            } else {
+                dialogs.alert("user not logged in: " + user.username);
+            }
         }).catch((error) => {
-            console.log(error);
-        });
-        });
+            dialogs.alert("Error logging in: " + user.username);
+            // console.log(error);
+    }).catch((error) => {
+        console.log(error);
+    });
+    });
 }
 
 export function register(args) {

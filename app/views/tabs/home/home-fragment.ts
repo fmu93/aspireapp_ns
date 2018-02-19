@@ -47,11 +47,11 @@ export function imgUpload() {
 }
 
 export function imgDownload() {
-    // const promise = BackendService.stream2url("f5b138d2-d3b9-4d3e-bf05-d331871eb25d")
-    // .then((response) => {
-    //     homeViewModel.img.src = response._downloadURL;
-    //     console.log("Downloaded: " + homeViewModel.img.src);
-    // }).catch((error) => {
-    //     console.log(error);
-    // });
+    const promise = BackendService.getDownloadUrl("arctic.png")
+    .then((url) => {
+        homeViewModel.img.src = url;
+        console.log("Downloaded: " + homeViewModel.img.src);
+    }).catch((error) => {
+        console.log(error);
+    });
 }

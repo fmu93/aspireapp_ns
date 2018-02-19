@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "email-validator": "1.1.1",
-    "kinvey-nativescript-sdk": "3.9.10",
     "nativescript-imagepicker": "4.0.1",
     "nativescript-localstorage": "^1.1.5",
     "nativescript-plugin-firebase": "^5.1.7",
