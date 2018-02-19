@@ -10,28 +10,28 @@ const tmobservable = new Observable();
 
 export function onLoaded(args: EventData) {
     const component = <StackLayout>args.object;
-    const dataStore = BackendService.collection2dataStore("memberList");
+    // const dataStore = BackendService.collection2dataStore("memberList");
 
     // load members data
-    const subscription = dataStore.find()
-    .subscribe((entities: Array<{}>) => {
-        while (members.length > 0) {
-            members.pop();
-        }
-        let i;
-        for (i = 0; i < entities.length; i++) {
-            if ("member" in entities[i]) {
-                members.push(entities[i]);
-            }
-        }
-        tmobservable.set("memberList", members);
-        component.bindingContext = tmobservable;
+    // const subscription = dataStore.find()
+    // .subscribe((entities: Array<{}>) => {
+    //     while (members.length > 0) {
+    //         members.pop();
+    //     }
+    //     let i;
+    //     for (i = 0; i < entities.length; i++) {
+    //         if ("member" in entities[i]) {
+    //             members.push(entities[i]);
+    //         }
+    //     }
+    //     tmobservable.set("memberList", members);
+    //     component.bindingContext = tmobservable;
 
-    }, (error) => {
-        console.log(error);
-    }, () => {
-        console.log("Finished pulling member data");
-    });
+    // }, (error) => {
+    //     console.log(error);
+    // }, () => {
+    //     console.log("Finished pulling member data");
+    // });
 }
 
 class Member {

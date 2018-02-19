@@ -41,17 +41,17 @@ export function imgUpload() {
         return context.present();
     }).then((selection) => {
         selection.forEach((element) => {
-            BackendService.uploadImage(element.fileUri, String(milliseconds));
+            BackendService.uploadFile(element.fileUri, String(milliseconds));
         });
     });
 }
 
 export function imgDownload() {
-    const promise = BackendService.stream2url("6198d3c2-a571-42a4-be0b-5cf4716655c8")
-    .then((response) => {
-        homeViewModel.img.src = response._downloadURL;
-        console.log("Downloaded: " + homeViewModel.img.src);
-    }).catch((error) => {
-        console.log(error);
-    });
+    // const promise = BackendService.stream2url("f5b138d2-d3b9-4d3e-bf05-d331871eb25d")
+    // .then((response) => {
+    //     homeViewModel.img.src = response._downloadURL;
+    //     console.log("Downloaded: " + homeViewModel.img.src);
+    // }).catch((error) => {
+    //     console.log(error);
+    // });
 }

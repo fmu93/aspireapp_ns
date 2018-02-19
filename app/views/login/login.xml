@@ -15,8 +15,8 @@
                 <StackLayout>
                     
                     <GridLayout ios:columns="auto,*" android:rows="auto, auto" verticalAlignment="top">
-                        <Label text="Username" class="field-title" />
-                        <TextField id="username" text="{{ username }}" class="field" ios:col="1" android:row="1" tap="onTextInputTapped" />
+                        <Label text="Email" class="field-title" />
+                        <TextField id="email" text="{{ email }}" keyboardType="email" class="field" ios:col="1" android:row="1" tap="onTextInputTapped" />
                     </GridLayout>
                     <StackLayout class="line"/>    
                    

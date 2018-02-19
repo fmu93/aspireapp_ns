@@ -1,5 +1,4 @@
 import { Observable } from "data/observable";
-import { Kinvey } from "kinvey-nativescript-sdk";
 import { Image } from "ui/image";
 import { ObservableProperty } from "../../../shared/observable-property-decorator";
 

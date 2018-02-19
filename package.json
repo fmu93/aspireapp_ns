@@ -17,6 +17,7 @@
     "kinvey-nativescript-sdk": "3.9.10",
     "nativescript-imagepicker": "4.0.1",
     "nativescript-localstorage": "^1.1.5",
+    "nativescript-plugin-firebase": "^5.1.7",
     "nativescript-theme-core": "~1.0.4",
     "nativescript-toast": "1.4.6",
     "tns-core-modules": "~3.4.0"

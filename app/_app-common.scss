@@ -33,8 +33,11 @@ ActionBar {
 
 .action-bar-title {
     margin: 5;
-    width: fit-content;
+    // width: fit-content; // TODO not finding "fit-content"
     text-align: center;
+    vertical-align: center;
+    horizontal-align: center;
+    display: inline-block;
 }
 
 .content-background {

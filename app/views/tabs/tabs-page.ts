@@ -1,4 +1,4 @@
-import { Kinvey } from "kinvey-nativescript-sdk";
+import firebase = require("nativescript-plugin-firebase");
 import { SelectedIndexChangedEventData, TabView, TabViewItem } from "tns-core-modules/ui/tab-view";
 import view = require("ui/core/view");
 import * as dialogs from "ui/dialogs";
@@ -6,6 +6,7 @@ import * as frameModule from "ui/frame";
 import label = require("ui/label");
 import { NavigatedData, Page } from "ui/page";
 import { BackendService } from "./../../shared/services/backend.service";
+import { User } from "./../../shared/user.model";
 import { TabsViewModel } from "./tabs-view-model";
 
 /* ***********************************************************
@@ -30,7 +31,7 @@ export function onNavigatingTo(args: NavigatedData) {
     } else {
         const charCode = 0xf2bd;
         const usernameLabel = <label.Label>view.getViewById(page, "username");
-        usernameLabel.text =  Kinvey.User.getActiveUser().username + " " + String.fromCharCode(charCode);
+        usernameLabel.text =  BackendService.getCurrentUser().username + " " + String.fromCharCode(charCode);
     }
 }
 

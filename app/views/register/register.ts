@@ -1,5 +1,5 @@
 import { EventData, fromObject, Observable } from "data/observable";
-import { Kinvey } from "kinvey-nativescript-sdk";
+// import { Kinvey } from "kinvey-nativescript-sdk";
 import { View } from "ui/core/view";
 import * as dialogs from "ui/dialogs";
 import { EditableTextBase } from "ui/editable-text-base";
@@ -23,9 +23,9 @@ export function signUp() {
             dialogs.alert("user logged off").then(() => {
                 completeRegistration();
                 console.log("success loggin off");
-        }).catch((error: Kinvey.BaseError) => {
-            console.log("error loggin off");
-        });
+            }).catch((error) => {
+                console.log(error);
+            });
         });
     } else if (user.isValidEmail()) {
         completeRegistration();
@@ -34,33 +34,28 @@ export function signUp() {
             message: "Enter a valid email address.",
             okButtonText: "OK"
         });
-        completeRegistration();
     }
 }
 
 export function completeRegistration() {
-    BackendService.exists(user).then((exists) => {
-        if (exists) {
-            dialogs.alert("Username already exists");
-        } else {
-            const promise = BackendService.register(user)
-            .then(() => {
-            // trying to save user into local storage on first singup
-            user.storeUser();
-            console.log(user.username + " pass: " + user.password);
-            })
-            .then(() => {
-            dialogs.alert("User registered and stored: " + user.username);
-            frameModule.topmost().navigate("views/login/login");
-            })
-            .catch((error: Kinvey.BaseError) => {
-            console.log(error.stack);
-            });
-        }
+    const promise = BackendService.register(user)
+    .then(() => {
+    // trying to save user into local storage on first singup
+    user.storeUser();
+    console.log(user.username + " pass: " + user.password);
+    })
+    .then(() => {
+        dialogs.alert("User registered and stored: " + user.username);
+        BackendService.logout();
+        frameModule.topmost().navigate("views/login/login");
+    })
+    .catch((error) => {
+        dialogs.alert("Error in registration");
+        console.log(error);
     });
 }
 
-export function goBack() {
+export function navigateLogin() {
     return frameModule.topmost().navigate("views/login/login");
 }
 

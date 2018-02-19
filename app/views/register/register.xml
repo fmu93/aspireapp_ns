@@ -23,7 +23,7 @@
                     
                     <GridLayout ios:columns="auto,*" android:rows="auto, auto" verticalAlignment="top">
                         <Label text="Email" class="field-title" />
-                        <TextField id="email" text="{{ email }}" class="field" ios:col="1" android:row="1" tap="onTextInputTapped" />
+                        <TextField id="email" text="{{ email }}" keyboardType="email" class="field" ios:col="1" android:row="1" tap="onTextInputTapped" />
                     </GridLayout>
                     <StackLayout class="line"/>
                     
@@ -46,7 +46,7 @@
                 </StackLayout>
             </ScrollView>
             <Button text="Register" class="update" tap="signUp" row="2"/>
-            <Button text="&#xf104; Back" class="fa" tap="goBack" row="3" />
+            <Button text="&#xf104; Back" class="fa" tap="navigateLogin" row="3" />
         </GridLayout>
         
         <Image src="res://logo" id="image" class="logo-picture" horizontalAlignment="center" stretch="none" tap="onProfilePictureTapped"/>
