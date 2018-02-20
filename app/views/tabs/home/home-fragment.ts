@@ -31,8 +31,9 @@ export function imgTap() {
     Toast.makeText(String(homeViewModel.img.src)).show();
 }
 
+let milliseconds;
 export function imgUpload() {
-    const milliseconds = (new Date()).getTime();
+    milliseconds = (new Date()).getTime();
     const context = imagepicker.create({
         mode: "single"
     });
