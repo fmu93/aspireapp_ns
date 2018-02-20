@@ -1,5 +1,4 @@
 import { EventData, fromObject } from "data/observable";
-// import { Kinvey, KinveyError } from "kinvey-nativescript-sdk";
 import { View } from "ui/core/view";
 import * as dialogs from "ui/dialogs";
 import { EditableTextBase } from "ui/editable-text-base";

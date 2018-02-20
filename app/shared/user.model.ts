@@ -4,7 +4,7 @@ import { Observable } from "tns-core-modules/ui/page/page";
 require("nativescript-localstorage");
 const validator = require("email-validator");
 
-export class User {
+export class User extends Observable {
   username?: string;
   email?: string;
   password?: string;

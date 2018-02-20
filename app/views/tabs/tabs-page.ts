@@ -8,6 +8,7 @@ import { NavigatedData, Page } from "ui/page";
 import { BackendService } from "./../../shared/services/backend.service";
 import { User } from "./../../shared/user.model";
 import { TabsViewModel } from "./tabs-view-model";
+require("./../../shared/services/firebase.common"); // initialize firebase!!
 
 /* ***********************************************************
 * Use the "onNavigatingTo" handler to initialize data for the whole tab
