@@ -123,10 +123,13 @@ export class BackendService {
 
   static uploadFile(localPath: string, filename?: string): Promise<any> {
     const localFullPath2 = fs.path.join(fs.knownFolders.currentApp().path, localPath);
-    const localFile = fs.File.fromPath(localFullPath2);
+    const localFile2 = fs.File.fromPath(localFullPath2);
+    console.log("Upload: " + localFullPath2);
+    console.log("Upload remote: " + "uploads/images/" + filename + localFile2.extension);
 
     return firebase.uploadFile({
-      remoteFullPath: "uploads/images/" + filename + localFile.extension,
+      remoteFullPath: "uploads/images/" + filename + localFile2.extension,
+      localFile: localFile2,
       localFullPath: localFullPath2,
       onProgress(status) {
           console.log("Uploaded fraction: " + status.fractionCompleted);
