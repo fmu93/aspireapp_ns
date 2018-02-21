@@ -5,7 +5,7 @@ purpose of the file is to pass control to the app’s first module.
 */
 import * as app from "application";
 import "./bundle-config";
-import "./shared/services/kinvey.common";
+import "./shared/kinvey.common";
 
 app.start({ moduleName: "./views/tabs/tabs-page" });
 

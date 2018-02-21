@@ -1,5 +1,5 @@
 const kinvey = require("kinvey-nativescript-sdk").Kinvey;
-const config = require("./config");
+import { Config } from "./config";
 
 /* ***********************************************************
 * The {N} Kinvey plugin initialization is explained in the plugin readme here:
@@ -8,8 +8,8 @@ const config = require("./config");
 * You can build and run this template without creating your own Kinvey project.
 *************************************************************/
 kinvey.init({
-    appKey: config.kinveyAppKey,
-    appSecret: config.kinveyAppSecret
+    appKey: Config.kinveyAppKey,
+    appSecret: Config.kinveyAppSecret
 });
 
 kinvey.ping()
