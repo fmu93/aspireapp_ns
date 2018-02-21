@@ -1,9 +1,9 @@
+import { getString, setString } from "application-settings";
+import fs = require("file-system");
 import firebase = require("nativescript-plugin-firebase");
 import { Observable } from "tns-core-modules/ui/page/page";
 import { User } from "./../../shared/user.model";
-const config = require("./config");
-import { getString, setString } from "application-settings";
-import fs = require("file-system");
+import { Config } from "./../config";
 
 const tokenKey = "token";
 // const currentUser = new User();
@@ -66,7 +66,7 @@ export class BackendService {
       }
     }).then((response) => {
         console.log(JSON.stringify(response));
-        config.uid = response.uid;
+        Config.token = response.uid;
         BackendService.token = response.uid;
 
         return response;
