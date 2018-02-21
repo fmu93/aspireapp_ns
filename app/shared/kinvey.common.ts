@@ -1,4 +1,4 @@
-const kinvey = require("kinvey-nativescript-sdk").Kinvey;
+import { Kinvey } from "kinvey-nativescript-sdk";
 import { Config } from "./config";
 
 /* ***********************************************************
@@ -7,12 +7,13 @@ import { Config } from "./config";
 * In this template, Kinvey is set up with a custom existing project, so that
 * You can build and run this template without creating your own Kinvey project.
 *************************************************************/
-kinvey.init({
-    appKey: Config.kinveyAppKey,
-    appSecret: Config.kinveyAppSecret
+
+Kinvey.init({
+    appKey: "kid_HJpLpxsIG",
+    appSecret: "93cbc008f7154f3fb09c1206e17c9ae0"
 });
 
-kinvey.ping()
+Kinvey.ping()
     .then((response) => {
         console.log(`Kinvey Ping Success. Kinvey Service is alive, version:
         ${response.version}, response: ${response.kinvey}`);
